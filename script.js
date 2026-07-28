@@ -35,22 +35,22 @@ const menuToggle =
     document.querySelector(".menu-toggle");
 
 const menuOverlay =
-    document.querySelector(".menu-overlay");
+document.querySelector(".mobile-overlay");
 
 const preloader =
-    document.querySelector(".preloader");
+document.getElementById("preloader");
 
 const cursor =
-    document.querySelector(".cursor");
+document.querySelector(".cursor-outline");
 
 const cursorDot =
     document.querySelector(".cursor-dot");
 
 const backToTop =
-    document.querySelector(".back-to-top");
+document.getElementById("backToTop");
 
 const whatsappButton =
-    document.querySelector(".whatsapp-float");
+document.querySelector(".floating-whatsapp");
 
 const scrollProgress =
     document.querySelector(".progress");
@@ -174,26 +174,34 @@ function initializeNavigation(){
 
     if(menuToggle){
 
-        menuToggle.addEventListener("click",toggleMenu);
+   function toggleMenu(){
 
-    }
+    if(mobileMenu)
+        mobileMenu.classList.toggle("active");
 
-    if(menuOverlay){
+    if(menuOverlay)
+        menuOverlay.classList.toggle("active");
 
-        menuOverlay.addEventListener("click",closeMenu);
+    if(menuToggle)
+        menuToggle.classList.toggle("active");
 
-    }
-
-    const links=document.querySelectorAll(
-
-        ".mobile-menu a"
+    body.classList.toggle("menu-open");
+}
 
     );
+function closeMenu(){
 
-    links.forEach(link=>{
+    if(mobileMenu)
+        mobileMenu.classList.remove("active");
 
-        link.addEventListener("click",closeMenu);
+    if(menuOverlay)
+        menuOverlay.classList.remove("active");
 
+    if(menuToggle)
+        menuToggle.classList.remove("active");
+
+    body.classList.remove("menu-open");
+}
     });
 
 }
